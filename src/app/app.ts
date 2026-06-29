@@ -1,14 +1,14 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgIf } from '@angular/common';
-import { DecimalPipe } from '@angular/common';
+import { DecimalPipe, DatePipe } from '@angular/common';
 import { WeatherService } from './services/weather.service';
 import { WeatherData } from './models/weather.model';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NgIf, DecimalPipe, FormsModule],
+  imports: [RouterOutlet, NgIf, DecimalPipe, FormsModule, DatePipe],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

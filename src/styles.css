@@ -26,11 +26,30 @@ body{
 }
 
 .container{
-  width: 400px;
-  height: 80vh;
+  width: 80vw;
+  height: 90vh;
   background-color: var(--blue-2);
   border-radius: 20px;
+  display: flex;
+  /* flex-direction: row; */
   box-shadow: 10px 10px 10px var(--shadow-dark);
+}
+
+.right-data{
+  position: relative;
+  overflow: hidden;
+  width: 50%;
+  height: 100%;
+  /* background-color: var(--yellow-1);   */
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.left-data{
+  position: relative;
+  overflow: hidden;
+  width: 50%;
+  height: 100%;
 }
 
 .upper-data{
@@ -39,7 +58,6 @@ body{
   width: 100%;
   height: 50%;
   border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
 }
 
 .lower-data{
@@ -47,9 +65,8 @@ body{
   overflow: hidden;
   width: 100%;
   height: 50%;
-  border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
-  padding: 1em;
+  
   display: flex;
   flex-direction: column;
 }
@@ -182,4 +199,37 @@ body{
   color: var(--white);
   font-size: 0.8em;
   text-align: center;
+}
+
+.day{
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row; 
+  justify-content: center;
+  align-items: center;
+  top: 5vh;
+}
+
+.day img{
+  width: 2em;
+}
+
+.date {
+  position: absolute;
+  left: 5vw;
+}
+
+.temperature-day{
+  position: absolute;
+  right: 5vw;
+}
+
+.temps{
+  position: absolute;
+  right: 5vw;
+  column-gap: 1em;
+  display: flex;
+  flex-direction: row;
 }
