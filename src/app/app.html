@@ -5,67 +5,86 @@
 </div>
 
 <div class="container" *ngIf="weatherData">
-  <div class="upper-data">
-    <img src="sandcat.jpeg" *ngIf="weatherData.current.is_day">
-    <img src="picassoBug.jpg" *ngIf="weatherData.current.is_day==0">
+  <div class="left-data">
+      <div class="upper-data">
+      <img src="sandcat.jpeg" *ngIf="weatherData.current.is_day">
+      <img src="picassoBug.jpg" *ngIf="weatherData.current.is_day==0">
 
-    <div class="weather-data">
-      <div class="location">{{weatherData.location.name}}</div>
-      <div class="temperature">{{weatherData.current.temp_c| number: '1.0-0'}}°C</div>
-      <div class="condition">
-        <div class="condition-label">{{weatherData.current.condition.text}}</div>
-        <img src={{weatherData.current.condition.icon}}>
+      <div class="weather-data">
+        <div class="location">{{weatherData.location.name}}</div>
+        <div class="temperature">{{weatherData.current.temp_c| number: '1.0-0'}}°C</div>
+        <div class="condition">
+          <div class="condition-label">{{weatherData.current.condition.text}}</div>
+          <img src={{weatherData.current.condition.icon}}>
+        </div>
+      </div>
+    </div>
+    <div class="lower-data">
+      <div class="more-data">
+        More information
+      </div>
+      <div class="more-data-container">
+      
+        <div class="data-block">
+          <div class="data-block-label">
+            <img src="humidity.png">
+            <span>Humidity</span>
+          </div>
+          <div class="data-block-value">
+            {{weatherData.current.humidity}}%
+          </div>
+        </div>
+
+        <div class="data-block">
+          <div class="data-block-label">
+            <img src="wind.png">
+            <span>Wind speed</span>
+          </div>
+          <div class="data-block-value">
+            {{weatherData.current.wind_kph}} km/h
+          </div>
+        </div>
+
+        <div class="data-block">
+          <div class="data-block-label">
+            <img src="uv.png">
+            <span>UV index</span>
+          </div>
+          <div class="data-block-value">
+            {{weatherData.current.uv}}
+          </div>
+        </div>
+
+        <div class="data-block">
+          <div class="data-block-label">
+            <img src="rain.png">
+            <span>Chance of rain</span>
+          </div>
+          <div class="data-block-value">
+            {{weatherData.forecast.forecastday[0].day.daily_chance_of_rain}}%
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="lower-data">
-    <div class="more-data">
-      More information
-    </div>
-    <div class="more-data-container">
-    
-      <div class="data-block">
-        <div class="data-block-label">
-          <img src="humidity.png">
-          <span>Humidity</span>
-        </div>
-        <div class="data-block-value">
-          {{weatherData.current.humidity}}%
-        </div>
+ 
+  <div class="right-data">
+      <div class="temps">  
+        <img src="high-temp.png">
+        <img src="low-temp.png">
       </div>
-
-      <div class="data-block">
-        <div class="data-block-label">
-          <img src="wind.png">
-          <span>Wind speed</span>
-        </div>
-        <div class="data-block-value">
-          {{weatherData.current.wind_kph}} km/h
-        </div>
-      </div>
-
-      <div class="data-block">
-        <div class="data-block-label">
-          <img src="uv.png">
-          <span>UV index</span>
-        </div>
-        <div class="data-block-value">
-          {{weatherData.current.uv}}
-        </div>
-      </div>
-
-      <div class="data-block">
-        <div class="data-block-label">
-          <img src="rain.png">
-          <span>Chance of rain</span>
-        </div>
-        <div class="data-block-value">
-          {{weatherData.forecast.forecastday[0].day.daily_chance_of_rain}}%
-        </div>
-      </div>
-    </div>
+      
+     @for(day of weatherData.forecast.forecastday; track day.date){    
+      <li class="day">
+        <div class="date">{{day.date | date: 'dd/MM'}} </div>
+        <img src={{day.day.condition.icon}}>
+        
+        <div class="temperature-day">{{day.day.maxtemp_c| number: '1.0-0'}}°C / {{day.day.mintemp_c | number: '1.0-0'}}°C </div>
+      </li>
+     }
   </div>
 </div>
+
 <div class="service">
   Powered by <br> <a href="https://www.weatherapi.com/" title="Free Weather API">WeatherAPI.com</a>
   <br>
